@@ -26,13 +26,13 @@ main.aa {
 }
 
 div.main-file-input {
-display: flex;
-justify-content: center;
-align-items: center;
-width: fit-content;
-height: 40px;
-column-gap: 5px;
-overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 40px;
+  column-gap: 5px;
+  overflow: hidden;
 }
 
 div.main-file-input button.file-input-button {
@@ -42,20 +42,20 @@ div.main-file-input button.file-input-button {
   align-items: center;
   border: none;
   background-color: #4245a8;
-  color: #F1F1F1;
+  color: #f1f1f1;
   border-radius: 7px;
   column-gap: 5px;
   padding: 10px 10px;
 }
 
-div.main-file-input button.file-input-button input[type = file] {
+div.main-file-input button.file-input-button input[type="file"] {
   position: absolute;
-  background-color: #0D0D17;
+  background-color: #0d0d17;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  color: #F1F1F1;
+  color: #f1f1f1;
   border-radius: 7px;
   opacity: 0;
 }
@@ -71,49 +71,63 @@ div.main-file-input button.file-input-button span {
 }
 
 div.main-file-input .print-button,
-div.main-file-input .clear-button{
+div.main-file-input .clear-button {
   border: none;
   font-size: 16px;
   font-weight: bold;
-  background-color: #2BC18A;
+  background-color: #2bc18a;
   height: 40px;
   border-radius: 7px;
-  color: #F1F1F1;
+  color: #f1f1f1;
   padding: 0 10px;
-  
 }
 
 div.main-file-input .clear-button {
-  background-color: #D61964;
+  background-color: #d61964;
 }
 
 button:disabled {
-  display: none; 
+  display: none;
 }
 
 div.barcodes {
   height: 500px;
   width: 100%;
   overflow-y: scroll;
-  background-color: #7D8FD5E6;
+  background-color: #7d8fd5e6;
   border-radius: 7px;
-  display: grid;
   padding: 10px;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(20, 1fr));
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 5px;
 }
 
+div.barcodes h4 {
+  background-color: #fff;
+  text-align: center;
+  padding-top: 9px;
+  font-weight: bolder;
+}
 
-div.barcodes svg{
-  width: 100%;
+div.barcodes svg {
+  height: fit-content;
 }
 
 @media print {
+  main {
+    width: 100%;
+  }
   div.main-file-input {
     display: none;
   }
   div.barcodes {
-  height: fit-content;
-  overflow-y: visible;
-}
+    display: block;
+    overflow-y: visible;
+    padding: 0;
+  }
+  div.barcodes svg {
+    width: 100px;
+    height: 60px;
+  }
 }
