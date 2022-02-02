@@ -1,0 +1,119 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+  margin-top: 10px;
+}
+
+main.aa {
+  align-items: flex-start;
+}
+
+div.main-file-input {
+display: flex;
+justify-content: center;
+align-items: center;
+width: fit-content;
+height: 40px;
+column-gap: 5px;
+overflow: hidden;
+}
+
+div.main-file-input button.file-input-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #4245a8;
+  color: #F1F1F1;
+  border-radius: 7px;
+  column-gap: 5px;
+  padding: 10px 10px;
+}
+
+div.main-file-input button.file-input-button input[type = file] {
+  position: absolute;
+  background-color: #0D0D17;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: #F1F1F1;
+  border-radius: 7px;
+  opacity: 0;
+}
+
+div.main-file-input button.file-input-button svg {
+  height: 20px;
+}
+
+div.main-file-input button.file-input-button span {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+div.main-file-input .print-button,
+div.main-file-input .clear-button{
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #2BC18A;
+  height: 40px;
+  border-radius: 7px;
+  color: #F1F1F1;
+  padding: 0 10px;
+  
+}
+
+div.main-file-input .clear-button {
+  background-color: #D61964;
+}
+
+button:disabled {
+  display: none; 
+}
+
+div.barcodes {
+  height: 500px;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: #7D8FD5E6;
+  border-radius: 7px;
+  display: grid;
+  padding: 10px;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(20, 1fr));
+}
+
+
+div.barcodes svg{
+  width: 100%;
+}
+
+@media print {
+  div.main-file-input {
+    display: none;
+  }
+  div.barcodes {
+  height: fit-content;
+  overflow-y: visible;
+}
+}
