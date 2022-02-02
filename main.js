@@ -18,7 +18,7 @@ inputFile.addEventListener('change', () => {
   divEle.className = 'data'
   titleEle.className = 'title'
   svgEle.className.baseVal = "barcode" + a;
-  const nodeTitle = document.createTextNode('Galaxy S21 FE')
+  const nodeTitle = document.createTextNode(data.Name)
     
   titleEle.append(nodeTitle)
   divEle.append(titleEle)

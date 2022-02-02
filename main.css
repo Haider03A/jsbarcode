@@ -126,8 +126,14 @@ div.barcodes svg {
     overflow-y: visible;
     padding: 0;
   }
+  div.barcodes div.data {
+    display: inline-block;
+  }
   div.barcodes svg {
     width: 100px;
     height: 60px;
+  }
+  div.barcodes h4 {
+    font-size: 5px;
   }
 }
