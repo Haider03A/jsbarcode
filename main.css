@@ -86,7 +86,7 @@ div.main-file-input .clear-button {
   background-color: #d61964;
 }
 
-button:disabled {
+button[disabled="null"] {
   display: none;
 }
 

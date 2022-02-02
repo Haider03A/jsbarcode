@@ -43,5 +43,7 @@ printButton[1].addEventListener('click', () => {
 printButton[2].addEventListener('click', () => {
   mainEle.innerHTML = ''
   inputFile.value = ''
-
+  printButton[1].setAttribute("disabled", null)
+  printButton[2].setAttribute("disabled", null)
+  mainEle.parentElement.classList.remove('aa')
 })
