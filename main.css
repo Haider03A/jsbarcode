@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: sans-serif;
   display: flex;
@@ -45,7 +49,7 @@ div.main-file-input button.file-input-button {
   border-radius: 7px;
   column-gap: 5px;
   padding: 10px 10px;
-min-width: fit-content;
+  min-width: fit-content;
 }
 
 div.main-file-input button.file-input-button input[type="file"] {
@@ -68,7 +72,6 @@ div.main-file-input button.file-input-button span {
   display: block;
   font-size: 16px;
   font-weight: bold;
-  
 }
 
 div.main-file-input .print-button,
@@ -97,21 +100,22 @@ div.main-file-input div.search-bar {
 }
 
 div.main-file-input input.input-search {
-position: absolute;
-z-index: 16;
+  position: absolute;
+  z-index: 16;
   border: none;
   height: 40px;
   width: 0px;
   right: 36px;
-  background-color: #EBE6DE;
+  background-color: #ebe6de;
   border-start-start-radius: 7px;
   border-end-start-radius: 7px;
-  transition: width .3s, padding .9s;
+  transition: width 0.3s, padding 0.9s;
   font-size: 16px;
-  color: #403E3B;
+  color: #403e3b;
 }
 
-div.main-file-input input.input-search:focus {
+div.main-file-input input.input-search:focus,
+div.main-file-input input.input-search[active="1"] {
   outline: none;
   width: 200px;
   padding: 0 10px;
@@ -119,12 +123,12 @@ div.main-file-input input.input-search:focus {
 
 div.main-file-input button.button-search {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  background-color: #D48B22;
-  color: #F1F1F1;
+  justify-content: center;
+  align-items: center;
+  background-color: #d48b22;
+  color: #f1f1f1;
   border-end-start-radius: 0;
-border-start-start-radius: 0;
+  border-start-start-radius: 0;
 }
 
 div.main-file-input div.search-bar nav {
@@ -134,52 +138,75 @@ div.main-file-input div.search-bar nav {
   top: 40px;
   width: 200px;
   height: 0px;
-  background-color: #EBE6DE;
-  color: #403E3B;
+  background-color: #ebe6de;
+  color: #403e3b;
 }
 
-
-
-
-[disabled=null] {
-  display: block; 
+[disabled="null"] {
+  display: none !important;
 }
 
 div.barcodes {
-height: 500px;
-overflow-x: scroll;
+  height: 500px;
+  overflow-x: scroll;
   width: 100%;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   border-radius: 7px;
   padding: 10px;
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  gap: 5px;
+}
+
+div.barcodes div.data {
+  display: inline-block;
 }
 
 div.barcodes div.no-items {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start; 
-  align-items: center; 
+  justify-content: flex-start;
+  align-items: center;
   row-gap: 15px;
 }
 
 div.barcodes div.no-items h1 {
   color: #000;
-  opacity: .5;
+  opacity: 0.5;
   text-align: center;
 }
 
 div.barcodes div.no-items h1 span {
-  color: #D82564;
+  color: #d82564;
 }
 
 div.barcodes div.no-items svg {
   width: 50px;
-  opacity: .5;
-  stroke: #D82564;
+  opacity: 0.5;
+  stroke: #d82564;
+}
+
+div.barcodes div[active="1"] {
+  position: relative;
+}
+
+div.barcodes div[active="1"]::before {
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 111;
+  position: absolute;
+  transition: 0.3s;
+  background-color: rgba(70, 131, 180, 0.411);
+  /* animation: m 3s infinite; */
+}
+
+@keyframes m {
+  0% {
+    background-color: rgb(197, 197, 197);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 
 div.barcodes h4 {
@@ -190,11 +217,12 @@ div.barcodes h4 {
 }
 
 div.barcodes svg {
+  width: fit-content;
   height: fit-content;
 }
 
 @media (max-width: 00px) {
-  div.barcodes div{
+  div.barcodes div {
     width: 100%;
   }
   div.barcodes svg {

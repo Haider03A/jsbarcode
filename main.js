@@ -21,7 +21,7 @@ inputFile.addEventListener('change', () => {
   divEle.className = 'data'
   titleEle.className = 'title'
   svgEle.className.baseVal = "barcode" + data.Id;
-  const nodeTitle = document.createTextNode(data.Name + 'a')
+  const nodeTitle = document.createTextNode(data.Name)
     
   titleEle.append(nodeTitle)
   divEle.append(titleEle)
@@ -32,13 +32,18 @@ inputFile.addEventListener('change', () => {
   
   })
   
-  searchButton.addEventListener('click', () => {
-  const searchValue = datas.find(data => data.Id == searchInput.value || data.Name == searchInput.value)
-  const theEle = document.querySelector(`.barcode${searchValue && searchValue.Id && searchValue.Id}`)
-  
- mainEle.scrollTo(0,(theEle && theEle.parentElement.offsetTop - theEle.parentElement.offsetHeight))
-  console.log(typeof(theEle && theEle.parentElement.offsetTop));
-})
+      searchButton.addEventListener('click', () => {
+      const searchValue = datas.find(data => data.Id == searchInput.value || data.Name == searchInput.value)
+      const theEles = document.querySelectorAll(`.barcode${searchValue && searchValue.Id && searchValue.Id}`)
+      
+    scrollTo(0,(theEles[0] && theEles[0].parentElement.offsetTop))
+
+	
+      theEles.forEach((theEle) => {
+		theEle.parentElement.removeAttribute('active')
+        theEle.parentElement.setAttribute('active', 1)
+      })
+    })
   
   
   
@@ -60,6 +65,7 @@ printButton[2].addEventListener('click', () => {
   inputFile.value = ''
   printButton[1].setAttribute("disabled", null)
   printButton[2].setAttribute("disabled", null)
+  searchInput.value = ''
   searchButton.parentElement.setAttribute("disabled", null)
   mainEle.parentElement.classList.remove('aa')
 })
@@ -68,3 +74,6 @@ searchButton.addEventListener('click', () => {
   searchInput.focus()
 })
 
+searchInput.addEventListener('click', (e) => {
+	console.log(e.target);
+})
