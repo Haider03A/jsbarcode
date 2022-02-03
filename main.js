@@ -1,8 +1,11 @@
 
   const printButton = document.querySelectorAll('div.main-file-input > button');
   const mainEle = document.querySelector('div.barcodes')
+const searchButton = document.querySelector('div.main-file-input button.button-search')
+const searchInput = document.querySelector('div.main-file-input input.input-search')
 
-let a = 0;
+
+let a = 1;
 const inputFile = document.querySelector('.input-flie')
 
 inputFile.addEventListener('change', () => {
@@ -17,19 +20,31 @@ inputFile.addEventListener('change', () => {
 
   divEle.className = 'data'
   titleEle.className = 'title'
-  svgEle.className.baseVal = "barcode" + a;
-  const nodeTitle = document.createTextNode(data.Name)
+  svgEle.className.baseVal = "barcode" + data.Id;
+  const nodeTitle = document.createTextNode(data.Name + 'a')
     
   titleEle.append(nodeTitle)
   divEle.append(titleEle)
   divEle.append(svgEle)
   mainEle.append(divEle)
 
-  JsBarcode('.barcode' + a, data.Id)
-  a++
+  JsBarcode('.barcode' + data.Id, data.Id)
+  
   })
+  
+  searchButton.addEventListener('click', () => {
+  const searchValue = datas.find(data => data.Id == searchInput.value || data.Name == searchInput.value)
+  const theEle = document.querySelector(`.barcode${searchValue && searchValue.Id && searchValue.Id}`)
+  
+ mainEle.scrollTo(0,(theEle && theEle.parentElement.offsetTop - theEle.parentElement.offsetHeight))
+  console.log(typeof(theEle && theEle.parentElement.offsetTop));
+})
+  
+  
+  
   printButton[1].removeAttribute("disabled")
   printButton[2].removeAttribute("disabled")
+  searchButton.parentElement.removeAttribute("disabled")
   mainEle.parentElement.classList.add('aa')
   
   };
@@ -45,5 +60,11 @@ printButton[2].addEventListener('click', () => {
   inputFile.value = ''
   printButton[1].setAttribute("disabled", null)
   printButton[2].setAttribute("disabled", null)
+  searchButton.parentElement.setAttribute("disabled", null)
   mainEle.parentElement.classList.remove('aa')
 })
+
+searchButton.addEventListener('click', () => {
+  searchInput.focus()
+})
+
